@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 
 import '../../constants/global_variables.dart';
 import '../../features/account/screens/account_screen.dart';
+import '../../features/account/screens/post_screen.dart';
 import '../../features/home/screens/home_screen.dart';
 
 class BottomBar extends StatefulWidget {
@@ -20,9 +21,7 @@ class _BottomBarState extends State<BottomBar> {
   List<Widget> pages = [
     const HomeScreen(),
     const AccountScreen(),
-    const Center(
-      child: Text('Cart Page'),
-    ),
+    const PostsScreen()
   ];
 
   void updatePage(int page) {
@@ -99,7 +98,7 @@ class _BottomBarState extends State<BottomBar> {
                   ),
                 ),
               ),
-              child: Badge(
+              child: const Badge(
                 label: Text('2'),
                 backgroundColor: Colors.red,
                 child: const Icon(

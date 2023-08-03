@@ -31,26 +31,27 @@ class _MyAppState extends State<MyApp> {
   void initState() {
     // TODO: implement initState
     super.initState();
-    authService.getUserDatat(context);
+    // authService.getUserDatat(context);
   }
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      debugShowCheckedModeBanner: false,
-      title: 'Amazon Clone',
-      theme: ThemeData(
-          colorScheme:
-              const ColorScheme.light(primary: GlobalVariables.secondaryColor),
-          scaffoldBackgroundColor: GlobalVariables.backgroundColor,
-          appBarTheme: const AppBarTheme(
-              elevation: 0, iconTheme: IconThemeData(color: Colors.black))),
-      onGenerateRoute: (settings) => generateRoute(settings),
-      home: Provider.of<UserProvider>(context).user.token.isNotEmpty
-          ? Provider.of<UserProvider>(context).user.type == 'user'
-              ? const BottomBar()
-              : const AdminScreen()
-          : const AuthScreen(),
-    );
+        debugShowCheckedModeBanner: false,
+        title: 'Amazon Clone',
+        theme: ThemeData(
+            colorScheme: const ColorScheme.light(
+                primary: GlobalVariables.secondaryColor),
+            scaffoldBackgroundColor: GlobalVariables.backgroundColor,
+            appBarTheme: const AppBarTheme(
+                elevation: 0, iconTheme: IconThemeData(color: Colors.black))),
+        onGenerateRoute: (settings) => generateRoute(settings),
+        home: ScaffoldMessenger(
+          child: Provider.of<UserProvider>(context).user.token.isNotEmpty
+              ? Provider.of<UserProvider>(context).user.type == 'user'
+                  ? const BottomBar()
+                  : const AdminScreen()
+              : const AuthScreen(),
+        ));
   }
 }
