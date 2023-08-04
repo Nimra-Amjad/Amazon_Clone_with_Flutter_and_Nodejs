@@ -1,6 +1,7 @@
 const express = require("express");
 const mongoose = require("mongoose");
 const authRouter = require("./routes/auth.js");
+const adminRouter = require("./routes/admin.js");
 const cors = require("cors");
 
 const PORT = 3000;
@@ -9,6 +10,7 @@ const app = express();
 //middleware
 app.use(express.json());
 app.use(authRouter);
+app.use(adminRouter);
 app.use(
   cors({
     origin: "*",
